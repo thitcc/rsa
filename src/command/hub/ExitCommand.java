@@ -1,4 +1,4 @@
-package command.util;
+package command.hub;
 
 import command.ICommand;
 
