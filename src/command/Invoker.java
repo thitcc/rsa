@@ -21,6 +21,8 @@ public class Invoker {
             return this.cmd[slot].execute();
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("This command: " + slot + " does not exist, please try again");
+        } catch (NullPointerException e) {
+            System.out.println("There is no command on this slot: " + slot + ", please try again");
         }
 
         return true;
