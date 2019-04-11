@@ -1,7 +1,8 @@
 package ic.ufal.br;
 
 import ic.ufal.br.command.hub.InvokerHub;
-import java.util.Scanner;
+
+import static ic.ufal.br.treatment.IntInputHandling.intInput;
 
 public class Main {
 
@@ -11,15 +12,12 @@ public class Main {
                 "1 - Generate Public Key\n" +
                 "2 - Encrypt\n" +
                 "3 - Decrypt\n" +
-                "0 - Exit\n" +
-                ">> ");
-
-        Scanner input = new Scanner(System.in);
+                "0 - Exit");
 
         InvokerHub hub = new InvokerHub(4);
 
-        while (hub.onSelect(input.nextInt())) {
-
+        while (hub.onSelect(intInput())) {
+            System.out.println("teste");
         }
 
     }
