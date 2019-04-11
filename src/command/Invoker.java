@@ -1,18 +1,19 @@
 package command;
 
-import command.hub.ExitCommand;
-
 public class Invoker {
 
     private ICommand[] cmd;
 
     public Invoker(int slots) {
         this.cmd = new ICommand[slots];
-        cmd[0] = new ExitCommand();
     }
 
     protected void setCmd(int slot, ICommand command) {
-        this.cmd[slot] = command;
+        try {
+            this.cmd[slot] = command;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("This index: " + slot + " is out of bounds, please try again");
+        }
     }
 
     public boolean onSelect(int slot) {
