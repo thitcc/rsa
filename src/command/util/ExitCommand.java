@@ -1,6 +1,6 @@
-package ic.ufal.br.command.util;
+package command.util;
 
-import ic.ufal.br.command.ICommand;
+import command.ICommand;
 
 public class ExitCommand implements ICommand {
     @Override

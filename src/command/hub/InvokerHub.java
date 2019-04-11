@@ -1,7 +1,7 @@
-package ic.ufal.br.command.hub;
+package command.hub;
 
-import ic.ufal.br.command.Invoker;
-import ic.ufal.br.command.util.ExitCommand;
+import command.Invoker;
+import command.util.ExitCommand;
 
 public class InvokerHub extends Invoker {
 

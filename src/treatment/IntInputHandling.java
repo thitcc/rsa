@@ -1,4 +1,4 @@
-package ic.ufal.br.treatment;
+package treatment;
 
 import java.util.Scanner;
 

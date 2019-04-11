@@ -1,8 +1,6 @@
-package ic.ufal.br;
+import command.hub.InvokerHub;
 
-import ic.ufal.br.command.hub.InvokerHub;
-
-import static ic.ufal.br.treatment.IntInputHandling.intInput;
+import static treatment.IntInputHandling.intInput;
 
 public class Main {
 

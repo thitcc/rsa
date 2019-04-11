@@ -1,6 +1,6 @@
-package ic.ufal.br.command.hub;
+package command.hub;
 
-import ic.ufal.br.command.ICommand;
+import command.ICommand;
 
 public class GeneratePublicKeyCommand implements ICommand {
     @Override

@@ -1,6 +1,6 @@
-package ic.ufal.br.command;
+package command;
 
-import ic.ufal.br.command.util.ExitCommand;
+import command.util.ExitCommand;
 
 public class Invoker {
 

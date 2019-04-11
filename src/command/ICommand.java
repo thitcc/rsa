@@ -1,4 +1,4 @@
-package ic.ufal.br.command;
+package command;
 
 public interface ICommand {
      boolean execute();
