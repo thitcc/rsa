@@ -1,6 +1,6 @@
 package command;
 
-import command.util.ExitCommand;
+import command.hub.ExitCommand;
 
 public class Invoker {
 
@@ -16,6 +16,12 @@ public class Invoker {
     }
 
     public boolean onSelect(int slot) {
-        return this.cmd[slot].execute();
+        try {
+            return this.cmd[slot].execute();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("This command: " + slot + " does not exist, please try again");
+        }
+
+        return true;
     }
 }
