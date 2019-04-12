@@ -5,10 +5,10 @@ import command.ICommand;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-import static treatment.FilesHandling.writeFile;
+import static treatment.FilesHandling.*;
 
 public class EncryptCommand implements ICommand {
-    
+
     @Override
     public boolean execute() {
         Scanner input = new Scanner(System.in);
@@ -25,11 +25,18 @@ public class EncryptCommand implements ICommand {
             return execute();
         }
 
-        System.out.print("\nPublic Key (n):\n>> ");
-        BigInteger n = input.nextBigInteger();
+        System.out.println("\nReading public key...");
+        BigInteger n, e;
+        StringBuilder content = new StringBuilder();
 
-        System.out.print("Exponent (e):\n>> ");
-        BigInteger e = input.nextBigInteger();
+        if (readFile("src/files/public_keys.txt", content)) {
+            String[] publicKey = content.toString().split(",");
+            n = new BigInteger(publicKey[0]);
+            e = new BigInteger(publicKey[1]);
+        }
+        else {
+            return true;
+        }
 
         char[] codedMessage = message.replace(' ','[').toCharArray();
         BigInteger[] encryptedMessage = new BigInteger[codedMessage.length];
@@ -43,7 +50,7 @@ public class EncryptCommand implements ICommand {
         }
 
         if (writeFile("src/files/encrypted_message.txt", message.split(",$")[0])) {
-            System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file");
+            System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file\n");
         }
 
         return true;
