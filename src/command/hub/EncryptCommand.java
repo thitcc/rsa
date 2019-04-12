@@ -2,10 +2,15 @@ package command.hub;
 
 import command.ICommand;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Scanner;
 
+import static treatment.BigIntInputHandling.bigIntegerInput;
+
 public class EncryptCommand implements ICommand {
+
     @Override
     public boolean execute() {
 
@@ -21,10 +26,10 @@ public class EncryptCommand implements ICommand {
         }
 
         System.out.print("\nPublic Key (n):\n>> ");
-        BigInteger publicKey = input.nextBigInteger();
+        BigInteger publicKey = bigIntegerInput();
 
         System.out.print("Exponent (e):\n>> ");
-        BigInteger exponent = input.nextBigInteger();
+        BigInteger exponent = bigIntegerInput();
 
         char[] codedMessage = message.replace(' ','[').toCharArray();
         BigInteger[] encryptedMessage = new BigInteger[codedMessage.length];
@@ -34,14 +39,18 @@ public class EncryptCommand implements ICommand {
             BigInteger aux = BigInteger.valueOf(codedMessage[i] - 'A');
             encryptedMessage[i] = aux.modPow(exponent, publicKey);
 
-            message += encryptedMessage[i] + ",";
+            message  += encryptedMessage[i] + ",";
         }
 
-        System.out.println("Encrypted message: " + message.split(",$")[0]);
-
-        System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file");
+        try {
+            FileWriter encryptedFile = new FileWriter("src/files/encrypted_message.txt");
+            encryptedFile.write(message.split(",$")[0]);
+            encryptedFile.close();
+            System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file");
+        } catch (IOException e) {
+            System.out.println("An error ocurred.\n" + e.getMessage());
+        }
 
         return true;
     }
-
 }

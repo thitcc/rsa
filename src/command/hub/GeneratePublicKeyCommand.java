@@ -6,8 +6,10 @@ import static treatment.IntInputHandling.intInput;
 import static treatment.PrimeHandling.isPrime;
 
 public class GeneratePublicKeyCommand implements ICommand {
+
     @Override
     public boolean execute() {
+
         boolean correctInput = false;
         int p, q;
 
