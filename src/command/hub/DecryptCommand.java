@@ -57,6 +57,9 @@ public class DecryptCommand implements ICommand {
         if (readFile("src/files/encrypted_message.txt", content)) {
             encryptedMessage = content.toString().split(",");
         }
+        else {
+            return true;
+        }
 
         String decryptedMessage = "";
         for(String character: encryptedMessage) {

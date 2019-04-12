@@ -14,6 +14,8 @@ public class FilesHandling {
             File fr = new File(pathname);
             Scanner reader = new Scanner(fr);
 
+            if (fr.length() == 0) throw new FileNotFoundException("Empty file");
+
             while (reader.hasNextLine()) {
                 content.append(reader.nextLine());
             }
@@ -30,11 +32,9 @@ public class FilesHandling {
     public static boolean writeFile(String filename, String content) {
 
         try {
-
             FileWriter fw = new FileWriter(filename);
             fw.write(content);
             fw.close();
-
         } catch (IOException e) {
             System.out.println("An error occurred");
             e.printStackTrace();
