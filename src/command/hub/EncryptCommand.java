@@ -39,6 +39,8 @@ public class EncryptCommand implements ICommand {
 
         System.out.println("Encrypted message: " + message.split(",$")[0]);
 
+        System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file");
+
         return true;
     }
 
