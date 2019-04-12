@@ -8,5 +8,6 @@ public class InvokerHub extends Invoker {
         super(slots);
         super.setCmd(0, new ExitCommand());
         super.setCmd(1, new GeneratePublicKeyCommand());
+        super.setCmd(2, new EncryptCommand());
     }
 }
