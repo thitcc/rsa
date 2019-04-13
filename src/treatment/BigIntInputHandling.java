@@ -15,9 +15,9 @@ public class BigIntInputHandling {
         while (!correctInput) {
             try {
                 System.out.print("\n>> ");
-                value = input.nextBigInteger();
+                value = new BigInteger(input.nextLine());
                 correctInput = true;
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.print("You typed an invalid value, please try again\n" +
                         e.getMessage());
             }

@@ -20,13 +20,13 @@ public class FilesHandling {
                 content.append(reader.nextLine());
             }
             reader.close();
+            return true;
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred");
             e.printStackTrace();
-            return false;
         }
 
-        return true;
+        return false;
     }
 
     public static boolean writeFile(String filename, String content) {
@@ -35,13 +35,13 @@ public class FilesHandling {
             FileWriter fw = new FileWriter(filename);
             fw.write(content);
             fw.close();
+            return true;
         } catch (IOException e) {
             System.out.println("An error occurred");
             e.printStackTrace();
-            return false;
         }
 
-        return true;
+        return false;
     }
 
 }

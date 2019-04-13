@@ -10,13 +10,14 @@ import static treatment.BigIntInputHandling.bigIntegerInput;
 import static treatment.GeneratePublicKeyHandling.*;
 
 public class GeneratePublicKeyCommand implements ICommand {
+
     @Override
     public boolean execute() {
         boolean correctInput;
         BigInteger p, q;
 
         do {
-            System.out.print("Please enter the first prime or 0 to exit ");
+            System.out.print("\nPlease enter the first prime or 0 to exit ");
             p = bigIntegerInput();
 
             System.out.print("Please enter the second prime or 0 to exit ");
@@ -47,11 +48,11 @@ public class GeneratePublicKeyCommand implements ICommand {
         } while (!correctInput);
 
         try {
-            FileWriter fw = new FileWriter("src/files/public_keys.txt");
+            FileWriter fw = new FileWriter("src/files/public_key.txt");
             fw.write(n + "," + e);
             fw.close();
-            System.out.println("\nThe public key has been saved in public_keys.txt file as n,e\n" +
-                    "Where n is (p * q) = " + p + " * " + q + " | and e is " + e + "\n");
+            System.out.println("\nThe public key has been saved in public_key.txt file as n,e\n" +
+                    "Where n is (p * q) = " + p + " * " + q + " = " + n + " | and e is " + e + "\n");
         } catch (IOException f) {
             System.out.println("An error occurred");
             f.printStackTrace();
