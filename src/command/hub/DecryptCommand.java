@@ -36,7 +36,7 @@ public class DecryptCommand implements ICommand {
         pn = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
 
         do {
-            System.out.print("Please enter \"e\" or 0 to exit");
+            System.out.print("Please enter value of \"e\" or 0 to exit");
             e = bigIntegerInput();
 
             if (e.compareTo(BigInteger.ZERO) == 0) {
