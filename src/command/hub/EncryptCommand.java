@@ -25,11 +25,10 @@ public class EncryptCommand implements ICommand {
             return execute();
         }
 
-        System.out.println("\nReading public key...");
         BigInteger n, e;
         StringBuilder content = new StringBuilder();
 
-        if (readFile("src/files/public_keys.txt", content)) {
+        if (readFile("src/files/public_key.txt", content)) {
             String[] publicKey = content.toString().split(",");
             n = new BigInteger(publicKey[0]);
             e = new BigInteger(publicKey[1]);
@@ -38,6 +37,9 @@ public class EncryptCommand implements ICommand {
             return true;
         }
 
+        System.out.println("\nUsing public key (" + n + "," + e + ") stored at public_key.txt\n" +
+                "In order to change the default key, generate another one in the menu");
+
         char[] codedMessage = message.replace(' ','[').toCharArray();
         BigInteger[] encryptedMessage = new BigInteger[codedMessage.length];
         message = "";
@@ -45,13 +47,11 @@ public class EncryptCommand implements ICommand {
         for (int i = 0; i < codedMessage.length; i++) {
             BigInteger character = BigInteger.valueOf(codedMessage[i] - 'A');
             encryptedMessage[i] = character.modPow(e, n);
-
             message += encryptedMessage[i] + ",";
         }
 
-        if (writeFile("src/files/encrypted_message.txt", message.split(",$")[0])) {
+        if (writeFile("src/files/encrypted_message.txt", message.split(",$")[0]))
             System.out.println("\nThe encrypted message has been saved in encrypted_message.txt file\n");
-        }
 
         return true;
     }

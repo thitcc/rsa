@@ -47,11 +47,11 @@ public class GeneratePublicKeyCommand implements ICommand {
         } while (!correctInput);
 
         try {
-            FileWriter fw = new FileWriter("src/files/public_keys.txt");
+            FileWriter fw = new FileWriter("src/files/public_key.txt");
             fw.write(n + "," + e);
             fw.close();
-            System.out.println("\nThe public key has been saved in public_keys.txt file as n,e\n" +
-                    "Where n is (p * q) = " + p + " * " + q + " | and e is " + e + "\n");
+            System.out.println("\nThe public key has been saved in public_key.txt file as n,e\n" +
+                    "Where n is (p * q) = " + p + " * " + q + " = " + n + " | and e is " + e + "\n");
         } catch (IOException f) {
             System.out.println("An error occurred");
             f.printStackTrace();

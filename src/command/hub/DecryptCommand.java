@@ -47,19 +47,17 @@ public class DecryptCommand implements ICommand {
             correctInput = coprimeTreatment(e, pn, n);
         } while (!correctInput);
 
-
         d = e.modInverse(pn);
 
         System.out.println("\nReading message...");
         StringBuilder content = new StringBuilder();
-        String[] encryptedMessage = {};
+        String[] encryptedMessage;
 
-        if (readFile("src/files/encrypted_message.txt", content)) {
+        if (readFile("src/files/encrypted_message.txt", content))
             encryptedMessage = content.toString().split(",");
-        }
-        else {
+        else
             return true;
-        }
+
 
         String decryptedMessage = "";
         for(String character: encryptedMessage) {
@@ -67,9 +65,12 @@ public class DecryptCommand implements ICommand {
         }
 
         decryptedMessage = decryptedMessage.replaceAll("\\[", " ");
-        if (writeFile("src/files/decrypted_message.txt", decryptedMessage)){
+
+        System.out.println("Decrypted Message:\n" + decryptedMessage);
+
+        if (writeFile("src/files/decrypted_message.txt", decryptedMessage))
             System.out.println("\nThe decrypted message has been saved in decrypted_message.txt file\n");
-        }
+
 
         return true;
     }
